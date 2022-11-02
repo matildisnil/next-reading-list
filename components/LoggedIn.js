@@ -23,8 +23,10 @@ const LoggedIn = () => {
 
     return (
         <div>
+        { user && (<div>
             <button onClick={handleLogOut}>Log out</button>
             <div>You are logged in as {user}</div>
+        </div>)}
         </div>
     )
 }

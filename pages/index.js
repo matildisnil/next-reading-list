@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { provider, auth } from '../firebase'
 import { signOut, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
@@ -9,7 +9,7 @@ export default function Home() {
   const router = useRouter();
   // const [user, setUser] = useState(null);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state)?.user?.user?.email;
+  const reduxUser = useSelector((state) => state)?.user?.user?.email;
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (user) => {
@@ -27,7 +27,7 @@ export default function Home() {
     });
     // return () => { };
     return unSubscribe();
-  }, [user]);
+  }, []);
 
   const handleLogin = () => {
     signInWithPopup(auth, provider)
@@ -74,13 +74,13 @@ export default function Home() {
   return (
     <div>
       {
-        !user ?
+        !reduxUser ?
           <button onClick={handleLogin}>Log in with Google</button>
           :
           <div>
             {/* <button onClick={handleLogOut}>Log out</button> */}
             <button onClick={handleNavigate}>Go to list</button>
-            <div>You are logged in as {user}</div>
+            <div>You are logged in as {reduxUser}</div>
           </div>
       }
     </div>

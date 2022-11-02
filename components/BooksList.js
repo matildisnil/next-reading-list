@@ -20,33 +20,34 @@ const BooksList = ({ readBoolean }) => {
     const router = useRouter();
 
 
-    const tempArray = [];
     useEffect(() => {
+        const tempArray = [];
         // this ifstatement should probably go, a little bit dangerous. probably I should load the books higher up instead
-        if (books.length === 0) {
-            const q = query(collection(db, "Books")/* , where("createdBy", "==", userUid) */);
-            getDocs(q)
-                .then((entries) => {
-                    entries.forEach(entry => {
-                        tempArray.push({ ...entry.data(), id: entry.id });
-                    })
-                    console.log(tempArray)
-                    dispatch(loadBooks(tempArray));
-                    // setBooks(tempArray);
+        // if (books.length === 0) {
+        const q = query(collection(db, "Books")/* , where("createdBy", "==", userUid) */);
+        getDocs(q)
+            .then((entries) => {
+                entries.forEach(entry => {
+                    tempArray.push({ ...entry.data(), id: entry.id });
                 })
-                .catch(err => {
-                    alert(err);
-                })
-        }
+                console.log(tempArray)
+                dispatch(loadBooks(tempArray));
+                // setBooks(tempArray);
+            })
+            .catch(err => {
+                alert(err);
+            })
+        // }
     }, []);
 
     const goToDetails = (e, id) => {
         e.stopPropagation();
         router.push(`/books/${id}`);
-        
+
     }
 
-    const handleCheckbox = async (uid) => {
+    const handleCheckbox = async (e, uid) => {
+        e.stopPropagation();
         try {
             const index = books.findIndex(book => book.id === uid)
             const bookRef = doc(db, 'Books', uid);
@@ -57,7 +58,8 @@ const BooksList = ({ readBoolean }) => {
         }
     }
 
-    const handleDelete = async (uid) => {
+    const handleDelete = async (e, uid) => {
+        e.stopPropagation();
         try {
             const index = books.findIndex(book => book.id === uid)
             const bookRef = doc(db, 'Books', uid);
@@ -73,19 +75,19 @@ const BooksList = ({ readBoolean }) => {
         <div>
             {books.filter(book => book.read === readBoolean).map(item => {
                 return (
-                <div onClick={(e) => goToDetails(e, item.id)} className={styles.item} key={item.id}>
-                    <input type="checkbox" checked={item.read} onChange={() => handleCheckbox(item.id)} />
-                    <div className={styles.itemTextContainer}>
-                        <p className="itemTitle">{item.title}</p>
-                        <p>{item.author}</p>
-                    </div>
-                    <AiFillDelete
-                        onClick={() => handleDelete(item.id)}
-                        className={styles.deleteIcon}
-                    />
-                </div>)
+                    <div onClick={(e) => goToDetails(e, item.id)} className={styles.item} key={item.id}>
+                        <input type="checkbox" checked={item.read} onChange={(e) => handleCheckbox(e, item.id)} />
+                        <div className={styles.itemTextContainer}>
+                            <p className="itemTitle">{item.title}</p>
+                            <p>{item.author}</p>
+                        </div>
+                        <AiFillDelete
+                            onClick={(e) => handleDelete(e, item.id)}
+                            className={styles.deleteIcon}
+                        />
+                    </div>)
             })}
-      </div>
+        </div>
     )
 }
 
