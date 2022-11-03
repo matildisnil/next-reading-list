@@ -1,4 +1,15 @@
-.container {
+.headingWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addIcon {
+  font-size: 3rem;
+  margin-right: 1rem;
+}
+
+/* .container {
   padding: 0 2rem;
 }
 
@@ -106,7 +117,7 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
-}
+} */
 
 @media (max-width: 600px) {
   .grid {

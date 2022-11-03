@@ -1,0 +1,18 @@
+.bookPage__upperDetails {
+  display: flex;
+}
+
+.bookPage__detailsShortText {
+  margin-left: 2rem;
+  
+}
+
+.imageReplacer {
+  
+}
+
+.bookPage__backIcon {
+  font-size: 3rem;
+  margin: 0 auto;
+}
+

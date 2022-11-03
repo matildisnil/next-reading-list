@@ -5,16 +5,16 @@ import { collection, getDocs, deleteDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import { loadBooks, toggleBook, removeBook } from '../redux/books/slices';
 // import AddBook from './AddBook';
-import { AiFillDelete } from 'react-icons/ai';
 import styles from '../styles/BooksList.module.css'
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 
 const BooksList = ({ readBoolean }) => {
     // const [books, setBooks] = useState('');
     // this is probably not a very efficent way of doing it, fix?
     const books = useSelector(state => state).books;
-    // const userUid = useSelector(state => state).user.user.uid
+    const userUid = useSelector(state => state)?.user?.user?.uid
     // console.log(userUid)
     const dispatch = useDispatch();
     const router = useRouter();
@@ -24,21 +24,22 @@ const BooksList = ({ readBoolean }) => {
         const tempArray = [];
         // this ifstatement should probably go, a little bit dangerous. probably I should load the books higher up instead
         // if (books.length === 0) {
-        const q = query(collection(db, "Books")/* , where("createdBy", "==", userUid) */);
-        getDocs(q)
-            .then((entries) => {
-                entries.forEach(entry => {
-                    tempArray.push({ ...entry.data(), id: entry.id });
+        if (userUid) {
+            const q = query(collection(db, "Books"), where("createdBy", "==", userUid));
+            getDocs(q)
+                .then((entries) => {
+                    entries.forEach(entry => {
+                        tempArray.push({ ...entry.data(), id: entry.id });
+                    })
+                    dispatch(loadBooks(tempArray));
+                    // setBooks(tempArray);
                 })
-                console.log(tempArray)
-                dispatch(loadBooks(tempArray));
-                // setBooks(tempArray);
-            })
-            .catch(err => {
-                alert(err);
-            })
-        // }
-    }, []);
+                .catch(err => {
+                    alert(err);
+                })
+            // }
+        }
+    }, [userUid]);
 
     const goToDetails = (e, id) => {
         e.stopPropagation();
@@ -75,16 +76,24 @@ const BooksList = ({ readBoolean }) => {
         <div>
             {books.filter(book => book.read === readBoolean).map(item => {
                 return (
-                    <div onClick={(e) => goToDetails(e, item.id)} className={styles.item} key={item.id}>
-                        <input type="checkbox" checked={item.read} onChange={(e) => handleCheckbox(e, item.id)} />
-                        <div className={styles.itemTextContainer}>
+                    <div onClick={(e) => goToDetails(e, item.id)} className={styles.book} key={item.id}>
+                        <input type="checkbox" defaultChecked={item.read} onClick={(e) => handleCheckbox(e, item.id)} className={styles.checkbox} />
+
+
+                        <div className={styles.bookTextContainer}>
                             <p className="itemTitle">{item.title}</p>
                             <p>{item.author}</p>
                         </div>
-                        <AiFillDelete
+                        {/* <AiFillDelete
                             onClick={(e) => handleDelete(e, item.id)}
                             className={styles.deleteIcon}
-                        />
+                        /> */}
+                       {item.smallThumbnailLink ?
+                            <Image src={item.smallThumbnailLink} width="64" height="100" alt={`the book ${item.title}`} />
+                            :
+                            <div className={styles.imageReplacer}>{item.title}</div>
+                        }
+
                     </div>)
             })}
         </div>

@@ -4,6 +4,8 @@ import { auth } from '../firebase'
 import { signOut } from 'firebase/auth';
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
+import Link from 'next/link';
+import styles from '../styles/LoggedInStatus.module.css'
 
 
 
@@ -23,10 +25,13 @@ const LoggedIn = () => {
 
     return (
         <div>
-        { user && (<div>
-            <button onClick={handleLogOut}>Log out</button>
-            <div>You are logged in as {user}</div>
-        </div>)}
+        { user ? (<div>
+            <button className={styles.logoutButton} onClick={handleLogOut}>Log out</button>
+            <div>{user}</div>
+        </div>)
+        :
+        <Link href="/">Go to login</Link>    
+    }
         </div>
     )
 }

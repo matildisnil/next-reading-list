@@ -1,11 +1,22 @@
-.item {
-    border: 1px solid black;
+.book {
     border-radius: 3px;
     display: flex;
     align-items: center;
+    background-color: white;
+    margin: 0.5rem;
+    padding: 0.5rem;
 }
 
-.itemTextContainer {
+.imageReplacer {
+    display: flex;
+    width: 64px;
+    height: 100px;
+    background-color: lightblue;
+    align-items: center;
+    text-align: center;
+}
+
+.bookTextContainer {
     flex-grow: 1;
     margin-left: 1em;
 }
@@ -13,4 +24,8 @@
 .deleteIcon {
     font-size: 2em;
     margin-right: 0.5em;
+}
+
+.checkbox {
+    margin-left: 1rem;
 }

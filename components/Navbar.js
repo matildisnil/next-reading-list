@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from '../styles/Navbar.module.css';
-import LoggedIn from './LoggedIn';
+import LoggedInStatus from './LoggedInStatus';
 
 
 const Navbar = () => {
     return (
         <div className={styles.navbar}>
-            <LoggedIn />
+            <LoggedInStatus />
         </div>
     )
 }

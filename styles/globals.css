@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  background-color: #ACD7EC;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -13,6 +17,11 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.backIcon {
+  font-size: 3rem;
+  margin: 0 auto;
 }
 
 @media (prefers-color-scheme: dark) {
