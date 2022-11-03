@@ -1,0 +1,23 @@
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
+}
+
+.inputElement {
+  padding: 0.6rem;
+}
+
+.googleBooksButton {
+  padding: 0.6rem;
+  background-color: #0e1111;
+  color: snow;
+  border-radius: 2px;
+}
+
+.manualAddButton {
+  padding: 0.3rem 0.6rem;
+  background-color: snow;
+  border-radius: 2px;
+  align-self: center;
+}

@@ -5,6 +5,7 @@ import { login, logout } from '../redux/login/slices'
 import { provider, auth } from '../firebase'
 import { signOut, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/router'
+import styles from '../styles/Login.module.css'
 
 export default function Home() {
   const router = useRouter();
@@ -72,11 +73,13 @@ export default function Home() {
 //     })
 //   }
 
+
+// do something about this, I think we ever only see the loginbutton
   return (
-    <div>
+    <div className={styles.container}>
       {
         !reduxUser ?
-          <button onClick={handleLogin}>Log in with Google</button>
+          <button onClick={handleLogin} className={styles.loginButton}>Log in with Google</button>
           :
           <div>
             {/* <button onClick={handleLogOut}>Log out</button> */}

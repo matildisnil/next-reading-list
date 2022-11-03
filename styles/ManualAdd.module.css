@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.inputElement {
+  padding: 0.6rem;
+  margin: 0.1rem 0;
+}
+
+.manualAddButton {
+  padding: 0.6rem;
+  background-color: #0e1111;
+  color: snow;
+  border-radius: 2px;
+}
