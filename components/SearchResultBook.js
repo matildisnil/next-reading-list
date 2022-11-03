@@ -52,7 +52,7 @@ const SearchResultBook = ({ bookId }) => {
                 <p>{book.volumeInfo.pageCount}</p>
                 <p>{book.volumeInfo.language}</p>
                 <p>{book.volumeInfo.publishedDate}</p> */}
-                {bookAdded ? 'This book has been added' :<button onClick={(e) => handleAddBook(e, book, dispatch, userUid, setBookAdded)}>Add book</button>}
+                {bookAdded ? 'This book has been added' :<button onClick={(e) => handleAddBook(e, book, dispatch, userUid, setBookAdded)} className={styles.addBookButton}>Add book</button>}
             </div>
         </div>}
         </>

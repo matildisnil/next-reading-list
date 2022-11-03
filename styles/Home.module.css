@@ -2,11 +2,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 1rem 0.5rem 1rem;
 }
 
 .addIcon {
   font-size: 3rem;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.toggleReadButton { 
+  border: none;
+  background-color: #FFFAFA;
+  padding: 0.7rem;
+  border-radius: 5px;
 }
 
 /* .container {
@@ -119,7 +133,7 @@
   margin-left: 0.5rem;
 } */
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
@@ -137,4 +151,4 @@
   .logo img {
     filter: invert(1);
   }
-}
+} */

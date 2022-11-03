@@ -1,20 +1,34 @@
 .bookContainer {
     display: flex;
     flex-direction: row;
-    border: 1px solid black;
     border-radius: 3px;
-    margin-top: 5px;
+    align-items: center;
+    background-color: snow;
+    margin: 0.5rem;
+    padding: 0.5rem;
 }
 
 .imageReplacer {
     display: flex;
     width: 128px;
     height: 200px;
-    background-color: lightblue;
+    background-color: #EFCFE3;
     align-items: center;
     text-align: center;
 }
 
 .bookContainer__text {
+    /* display: flex;
+    flex-direction: column; */
     margin-left: 0.5rem;
+}
+
+.addBookButton {
+    background-color: #d81159;
+    padding: 0.1rem 0.3rem;
+    border-radius: 2px;
+    color: snow;
+    font-weight: 600;
+    /* align-self: flex-end;
+    margin: 1rem; */
 }

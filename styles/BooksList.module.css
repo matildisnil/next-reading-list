@@ -2,7 +2,7 @@
     border-radius: 3px;
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: snow;
     margin: 0.5rem;
     padding: 0.5rem;
 }
@@ -11,7 +11,7 @@
     display: flex;
     width: 64px;
     height: 100px;
-    background-color: lightblue;
+    background-color: #EFCFE3;
     align-items: center;
     text-align: center;
 }

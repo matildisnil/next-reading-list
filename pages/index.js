@@ -21,13 +21,11 @@ const UnReadBooks = () => {
     <div>
       <div className={styles.headingWrapper}>
         <h1>Reading list</h1>
-        <Link href="/addbook"><MdAdd className={styles.addIcon}/></Link>
+        <Link href="/addbook"><MdAdd className={styles.addIcon} /></Link>
       </div>
-        {/* <button onClick={toggleReadBoolean}>Go to list of finished books</button> */}
-      {/* <AddBook /> */}
-
-      <button onClick={toggleReadBoolean}>View list of read books</button>
-        {/* <BooksList readBoolean={readBoolean} /> */}
+      <div className={styles.buttonContainer}>
+        <button onClick={toggleReadBoolean} className={styles.toggleReadButton}>{readBoolean ? 'View list of un-read books' :'View list of read books'}</button>
+      </div>
       <BooksList readBoolean={readBoolean} />
     </div>
   )
