@@ -8,19 +8,42 @@
     padding: 0.5rem;
 }
 
+.image {
+}
+
 .imageReplacer {
     display: flex;
+    flex-shrink: 0;
     width: 128px;
     height: 200px;
     background-color: #EFCFE3;
     align-items: center;
-    text-align: center;
+    justify-content: center;
 }
 
-.bookContainer__text {
-    /* display: flex;
-    flex-direction: column; */
+.bookIcon {
+    font-size: 3rem;
+}
+
+.textAndButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+    height: 200px;
     margin-left: 0.5rem;
+}
+
+.textContainer {
+    flex-grow: 1;
+}
+
+.textContainer p {
+    margin: 8px;
+}
+
+.titleText {
+    font-weight: bold;
 }
 
 .addBookButton {
@@ -29,6 +52,6 @@
     border-radius: 2px;
     color: snow;
     font-weight: 600;
-    /* align-self: flex-end;
-    margin: 1rem; */
+    margin: 0.2rem;
+    align-self: flex-end; 
 }

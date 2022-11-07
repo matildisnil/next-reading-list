@@ -1,10 +1,14 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from '../styles/SearchResultBook.module.css'
 import Image from 'next/image';
 import { handleAddBook } from '../library';
 import { useRouter } from 'next/router';
+import { FaBook } from 'react-icons/fa'
+import { GiBookCover } from 'react-icons/gi'
+
+
 
 const SearchResultBook = ({ bookId }) => {
     const router = useRouter();
@@ -13,7 +17,7 @@ const SearchResultBook = ({ bookId }) => {
     const dispatch = useDispatch();
     const userUid = useSelector((state) => state)?.user?.user?.uid;
     const [bookAdded, setBookAdded] = useState(false);
-  
+
 
     // const [newBookState, setNewBookState] = useState({
     //     title: book.volumeInfo.title,
@@ -28,33 +32,35 @@ const SearchResultBook = ({ bookId }) => {
     const handleNavigate = (e) => {
         e.stopPropagation();
         router.push(`/searchbooks/${book.googlebooks_id}`);
-        
+
     }
 
     return (
         <>
-        {book && <div className={styles.bookContainer} onClick={handleNavigate}>
-            {book.smallThumbnailLink ?
-                <Image src={book.smallThumbnailLink} width="128" height="200" alt={`The book ${book.title}`} />
-                :
-                <div className={styles.imageReplacer}>
-                    {book.title}
-                </div>
+            {book && <div className={styles.bookContainer} onClick={handleNavigate}>
+                {book.smallThumbnailLink ?
+                    <Image src={book.smallThumbnailLink} width="128" height="200" alt={`The book ${book.title}`} className={styles.image} />
+                    :
+                    <div className={styles.imageReplacer}>
+                        <GiBookCover className={styles.bookIcon} />
+                    </div>
 
-            }
-            <div className={styles.bookContainer__text}>
-                <p>{book.title}</p>
-                <p>{book.author}</p>
-                <p>{book.pages}</p>
-                <p>{book.published}</p>
-                {/* <p>{book.volumeInfo.title}</p>
+                }
+                <div className={styles.textAndButtonContainer}>
+                    <div className={styles.textContainer}>
+                        <p className={styles.titleText}>{book.title}</p>
+                        <p>{book.author}</p>
+                        <p>Published: {book.published}</p>
+                        <p>Pages: {book.pages}</p>
+                    </div>
+                    {/* <p>{book.volumeInfo.title}</p>
                 <p>{book.volumeInfo?.authors?.join(', ')}</p>
                 <p>{book.volumeInfo.pageCount}</p>
                 <p>{book.volumeInfo.language}</p>
                 <p>{book.volumeInfo.publishedDate}</p> */}
-                {bookAdded ? 'This book has been added' :<button onClick={(e) => handleAddBook(e, book, dispatch, userUid, setBookAdded)} className={styles.addBookButton}>Add book</button>}
-            </div>
-        </div>}
+                    {bookAdded ? 'This book has been added' : <button onClick={(e) => handleAddBook(e, book, dispatch, userUid, setBookAdded)} className={styles.addBookButton}>Add book</button>}
+                </div>
+            </div>}
         </>
     )
 }

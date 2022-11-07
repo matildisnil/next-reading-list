@@ -5,9 +5,9 @@ import styles from '../styles/BookDetails.module.css'
 const BookDetails = ({ book }) => {
 
   return (
-    <div>
+    <div className={styles.detailsContainer}>
       <div className={styles.bookPage__upperDetails}>
-        {book?.thumbnailLink &&
+        {book.thumbnailLink &&
           <Image src={book.thumbnailLink} width={128} height={200} alt={`The book ${book.title}`} />
 
         }
@@ -19,7 +19,7 @@ const BookDetails = ({ book }) => {
           <p>Published: {book.published}</p>
         </div>
       </div>
-      <p>{book.description}</p>
+      <p className={styles.description}>{book.description}</p>
     </div>
   )
 }

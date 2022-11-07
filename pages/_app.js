@@ -1,16 +1,12 @@
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
-import '../styles/globals.css'
-import { Provider, useSelector, useDispatch } from 'react-redux';
-import { login, logout } from '../redux/login/slices'
-
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
 import Layout from '../components/Layout';
 import Login from './login';
 import Loading from './loading';
-
-
-import { store } from '../redux/store';
 import AuthHandler from '../components/AuthHandler';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);

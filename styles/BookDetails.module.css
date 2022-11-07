@@ -1,3 +1,10 @@
+/* .detailsContainer {
+  background-color: white;
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+} */
+
 .bookPage__upperDetails {
   display: flex;
 }
@@ -16,3 +23,6 @@
   margin: 0 auto;
 }
 
+.description {
+  text-align: justify;
+}

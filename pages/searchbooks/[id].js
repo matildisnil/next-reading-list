@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/BooksId.module.css'
+import styles from '../../styles/SearchBooksId.module.css'
 import { MdArrowBack } from 'react-icons/md'
 import BookDetails from '../../components/BookDetails';
 
@@ -24,7 +24,7 @@ const SearchBook = () => {
   
 
   return (
-    <div>
+    <div >
       <BookDetails book={book} />
       <Link href="/addbook"><MdArrowBack className={styles.bookPage__backIcon}/></Link>
     </div>

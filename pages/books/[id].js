@@ -34,12 +34,13 @@ const Book = () => {
   }
 
   return (
-    <div>
+    <div className={styles.detailsContainer}>
+
+      {book && <BookDetails book={book} />}
       <div className={styles.iconContainer}>
         <Link href="/"><MdArrowBack className={styles.backIcon} /></Link>
         <AiFillDelete onClick={handleDelete} className={styles.deleteIcon} />
       </div>
-      {book && <BookDetails book={book} />}
     </div>
   )
 }

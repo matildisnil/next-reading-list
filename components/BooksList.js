@@ -8,6 +8,7 @@ import { loadBooks, toggleBook, removeBook } from '../redux/books/slices';
 import styles from '../styles/BooksList.module.css'
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { GiBookCover } from 'react-icons/gi'
 
 
 const BooksList = ({ readBoolean }) => {
@@ -81,8 +82,8 @@ const BooksList = ({ readBoolean }) => {
 
 
                         <div className={styles.bookTextContainer}>
-                            <p className="itemTitle">{item.title}</p>
-                            <p>{item.author}</p>
+                            <p className={styles.itemTitle}>{item.title}</p>
+                            <p className={styles.itemAuthor}>{item.author}</p>
                         </div>
                         {/* <AiFillDelete
                             onClick={(e) => handleDelete(e, item.id)}
@@ -91,7 +92,7 @@ const BooksList = ({ readBoolean }) => {
                        {item.smallThumbnailLink ?
                             <Image src={item.smallThumbnailLink} width="64" height="100" alt={`the book ${item.title}`} />
                             :
-                            <div className={styles.imageReplacer}>{item.title}</div>
+                            <div className={styles.imageReplacer}><GiBookCover className={styles.bookIcon}/></div>
                         }
 
                     </div>)

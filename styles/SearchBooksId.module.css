@@ -5,17 +5,6 @@
   padding: 0.9rem;
 }
 
-.iconContainer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.deleteIcon {
-  font-size: 3rem;
-  margin: 1rem;
-
-}
-
 .backIcon {
   font-size: 3rem;
   margin: 1rem;
