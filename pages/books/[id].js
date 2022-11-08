@@ -15,6 +15,7 @@ import { db } from '../../firebase';
 
 const Book = () => {
   const books = useSelector(state => state).books;
+
   const dispatch = useDispatch();
   const router = useRouter();
   const index = books.findIndex(book => book.id === router.query.id)

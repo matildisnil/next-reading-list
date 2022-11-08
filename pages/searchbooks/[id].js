@@ -24,9 +24,9 @@ const SearchBook = () => {
   
 
   return (
-    <div >
-      <BookDetails book={book} />
-      <Link href="/addbook"><MdArrowBack className={styles.bookPage__backIcon}/></Link>
+    <div className={styles.detailsContainer}>
+      {book && <BookDetails book={book} />}
+      <Link href="/addbook"><MdArrowBack className={styles.backIcon}/></Link>
     </div>
   )
 }

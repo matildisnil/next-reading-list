@@ -7,7 +7,7 @@ const BookDetails = ({ book }) => {
   return (
     <div className={styles.detailsContainer}>
       <div className={styles.bookPage__upperDetails}>
-        {book.thumbnailLink &&
+        {book?.thumbnailLink &&
           <Image src={book.thumbnailLink} width={128} height={200} alt={`The book ${book.title}`} />
 
         }

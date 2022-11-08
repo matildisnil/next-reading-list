@@ -3,7 +3,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import { addBook } from '../redux/books/slices';
 
 // kanske ta bort några argument som kan hämtas här
-const handleAddBook = async (e, newBookState, dispatch, userUid, setBookAdded) => {
+const handleAddBook = async (e, newBookState, dispatch, userUid) => {
   e.stopPropagation();
   try {
     // const newBook = {
@@ -15,10 +15,6 @@ const handleAddBook = async (e, newBookState, dispatch, userUid, setBookAdded) =
     //     createdBy: userUid,
     //     // createdAt: serverTimestamp(),
     // }
-    if(newBookState.title === ''){
-      alert('Please provide a title.');
-      return;
-    }
     const newBook = {
       ...newBookState,
       read: false,
@@ -33,7 +29,6 @@ const handleAddBook = async (e, newBookState, dispatch, userUid, setBookAdded) =
     //     title: '',
     //     author: '',
     // })
-    setBookAdded(true);
 
   } catch (err) {
     alert(err);

@@ -1,11 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .innerContainer {
   display: flex;
   flex-direction: column;
-  margin: 3rem;
+  /* margin: 3rem; */
+  /* width: 80%; */
+  width: 100%;
+}
+
+.heading {
+  align-self: center;
 }
 
 .inputElement {
   padding: 0.6rem;
+}
+
+.googleSearchContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  align-self: center;
+  width: 80%;
 }
 
 .googleBooksButton {
@@ -15,9 +35,39 @@
   border-radius: 2px;
 }
 
+.notFoundText {
+  align-self: center;
+}
+
 .manualAddButton {
   padding: 0.3rem 0.6rem;
   background-color: snow;
   border-radius: 2px;
   align-self: center;
+  margin-bottom: 2rem;
+}
+
+.backIconContainer {
+  display: flex;
+  align-items: center;
+}
+
+.booklistContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+@media (min-width:400px){
+  .innerContainer {
+    width: 400px;
+    /* margin: 0 auto; */
+  }
+}
+
+@media (min-width: 800px){
+  .booklistContainer {
+    width: 800px;
+    margin: 0 auto;
+  }
 }

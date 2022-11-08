@@ -9,8 +9,12 @@ export const booksSlice = createSlice({
         loadBooks: (state, action) => action.payload,
         addBook: (state, action) => [...state, action.payload],
         toggleBook: (state, action) => {
-            const index = action.payload;
-            state[index].read = !state[index].read},
+            // const index = action.payload;
+            const uid = action.payload;
+            const found = state.find(book => book.id === uid);
+            found.read = !found.read;
+            // state[index].read = !state[index].read
+        },
         removeBook: (state, action) => {
             const index = action.payload;
             return [...state.slice(0,index), ...state.slice(index +1)]

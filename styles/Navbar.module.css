@@ -1,7 +1,12 @@
 .navbar {
-
-    height: 4rem;
+    display: flex;
+    /* height: 4rem; */
     background-color: #006BA6;
-    text-align: right;
-    
+    align-items: center;
+}
+
+.text {
+    flex-grow: 1;
+    font-size: 2rem;
+    margin: 0 1rem;
 }

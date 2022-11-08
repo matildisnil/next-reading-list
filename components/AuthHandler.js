@@ -5,6 +5,11 @@ import { signOut, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 import { useRouter } from 'next/router'
 import { login, logout } from '../redux/login/slices'
 
+// import { query, where } from "firebase/firestore";
+// import { collection, getDocs } from "firebase/firestore";
+// import { db } from '../firebase';
+// import { loadBooks } from '../redux/books/slices';
+
 
 export default function AuthHandler({ children }) {
     const router = useRouter();
@@ -13,7 +18,6 @@ export default function AuthHandler({ children }) {
     //   const reduxUser = useSelector((state) => state)?.user?.user?.email;
 
     useEffect(() => {
-        console.log('useeffectgate authhandler');
 
         const unSubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -25,6 +29,24 @@ export default function AuthHandler({ children }) {
                     })
                 );
                 // router.push('/');
+                console.log('useeffectgate authhandler');
+                // const tempArray = [];
+
+                // if (user.uid) {
+                //     console.log('books reloaded');
+                //     const q = query(collection(db, "Books"), where("createdBy", "==", user.uid));
+                //     getDocs(q)
+                //         .then((entries) => {
+                //             entries.forEach(entry => {
+                //                 tempArray.push({ ...entry.data(), id: entry.id });
+                //             })
+                //             dispatch(loadBooks(tempArray));
+                //         })
+                //         .catch(err => {
+                //             alert(err);
+                //         })
+                //     // }
+                // }
             }
             else {
                 router.push('/loading');

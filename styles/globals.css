@@ -19,7 +19,7 @@ a {
   box-sizing: border-box;
 }
 
-button, input[type="submit"] {
+button {
 	background: snow;
 	color: inherit;
 	border: none;
@@ -27,16 +27,39 @@ button, input[type="submit"] {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+  transition: all .2s ease-in-out; 
+
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
+  background-color: black;
+  color: snow;
+  
 }
 
 .backIcon {
   font-size: 3rem;
-  margin: 0 auto;
+  transition: all .2s ease-in-out; 
+
+}
+
+.backIcon:hover {
+  transform: scale(1.1);
+}
+
+.backIcon:active {
+  transform: scale(1.2);
 }
 
 
 
-@media (prefers-color-scheme: dark) {
+
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -44,4 +67,4 @@ button, input[type="submit"] {
     color: white;
     background: black;
   }
-}
+} */

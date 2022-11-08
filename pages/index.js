@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BooksList from '../components/BooksList';
-// import AddBook from '../components/AddBook';
-import Router, { useRouter } from 'next/router';
 import Link from 'next/link';
 import { MdAdd } from 'react-icons/md';
 import styles from '../styles/Home.module.css'
 
-
-// import AddBook from '../components/AddBook';
-
 const UnReadBooks = () => {
   const [readBoolean, setReadBoolean] = useState(false)
-  // const [books, setBooks] = useState('');
-  // this is probably not a very efficent way of doing it, fix?
+
   const toggleReadBoolean = () => {
     setReadBoolean(prev => !prev)
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.headingWrapper}>
-        <h1>Reading list</h1>
-        <Link href="/addbook"><MdAdd className={styles.addIcon} /></Link>
+{/*         <h1 className={styles.heading}>Reading list</h1> */}
+
       </div>
+      <Link href="/addbook" className={styles.addBooks}>
+        <MdAdd className={styles.addIcon} />
+        <p className={styles.addBooksText}>Add some books to your reading list!</p>
+      </Link>
       <div className={styles.buttonContainer}>
         <button onClick={toggleReadBoolean} className={styles.toggleReadButton}>{readBoolean ? 'View list of un-read books' :'View list of read books'}</button>
       </div>

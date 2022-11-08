@@ -1,0 +1,57 @@
+.book {
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  background-color: snow;
+  margin: 0.25rem;
+  padding: 0.5rem;
+  transition: all .2s ease-in-out; 
+}
+
+.book:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.imageReplacer {
+  display: flex;
+  flex-shrink: 0;
+  width: 64px;
+  height: 100px;
+  background-color: #EFCFE3;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.bookIcon {
+  font-size: 2rem;
+}
+
+.bookTextContainer {
+  flex-grow: 1;
+  margin-left: 1em;
+}
+
+.deleteIcon {
+  font-size: 2em;
+  margin-right: 0.5em;
+}
+
+
+
+.checkbox {
+  margin-left: 1rem;
+  transform: scale(1.5);
+}
+
+.itemTitle {
+  font-weight: bold;
+}
+
+.bookTextContainer p {
+  margin: 8px;
+}
+
+@media (min-width:400px){
+}

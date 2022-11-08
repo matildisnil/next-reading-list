@@ -35,6 +35,11 @@ const SearchResultBook = ({ bookId }) => {
 
     }
 
+    const addBook = e => {
+        handleAddBook(e, book, dispatch, userUid);
+        setBookAdded(true);
+    }
+
     return (
         <>
             {book && <div className={styles.bookContainer} onClick={handleNavigate}>
@@ -49,16 +54,12 @@ const SearchResultBook = ({ bookId }) => {
                 <div className={styles.textAndButtonContainer}>
                     <div className={styles.textContainer}>
                         <p className={styles.titleText}>{book.title}</p>
-                        <p>{book.author}</p>
-                        <p>Published: {book.published}</p>
-                        <p>Pages: {book.pages}</p>
+                        <p className={styles.authorText}>{book.author}</p>
+                        {/* <p>Published: {book.published}</p> */}
+                        {/* <p>Pages: {book.pages}</p>  */}
+                        {book.description && <p className={styles.descriptionText}>{book.description }</p>} 
                     </div>
-                    {/* <p>{book.volumeInfo.title}</p>
-                <p>{book.volumeInfo?.authors?.join(', ')}</p>
-                <p>{book.volumeInfo.pageCount}</p>
-                <p>{book.volumeInfo.language}</p>
-                <p>{book.volumeInfo.publishedDate}</p> */}
-                    {bookAdded ? 'This book has been added' : <button onClick={(e) => handleAddBook(e, book, dispatch, userUid, setBookAdded)} className={styles.addBookButton}>Add book</button>}
+                    {bookAdded ? 'This book has been added' : <button onClick={(e) => addBook(e)} className={styles.addBookButton}>Add book</button>}
                 </div>
             </div>}
         </>
