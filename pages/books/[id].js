@@ -11,6 +11,8 @@ import { AiFillDelete } from 'react-icons/ai';
 import BookDetails from '../../components/BookDetails';
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../../firebase';
+import { AiOutlineDelete } from 'react-icons/ai';
+
 
 
 const Book = () => {
@@ -35,13 +37,15 @@ const Book = () => {
   }
 
   return (
+    <div className={styles.container}>
     <div className={styles.detailsContainer}>
 
       {book && <BookDetails book={book} />}
       <div className={styles.iconContainer}>
         <Link href="/"><MdArrowBack className="backIcon" /></Link>
-        <AiFillDelete onClick={handleDelete} className="backIcon" />
+        <AiOutlineDelete onClick={handleDelete} className="backIcon" />
       </div>
+    </div>
     </div>
   )
 }

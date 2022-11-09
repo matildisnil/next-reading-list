@@ -59,7 +59,7 @@ const SearchResultBook = ({ bookId }) => {
                         {/* <p>Pages: {book.pages}</p>  */}
                         {book.description && <p className={styles.descriptionText}>{book.description }</p>} 
                     </div>
-                    {bookAdded ? 'This book has been added' : <button onClick={(e) => addBook(e)} className={styles.addBookButton}>Add book</button>}
+                    {bookAdded ? <div className={styles.addedText}>Book added</div> : <button onClick={(e) => addBook(e)} className={styles.addBookButton}>Add book</button>}
                 </div>
             </div>}
         </>

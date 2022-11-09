@@ -37,11 +37,16 @@
   font-size: 1em;
   align-self: flex-start;
   justify-self: flex-end;
+  flex-shrink: 0;
 }
 
+.deleteIcon:hover {
+  color: red;
+}
 
-
-
+.deleteIcon:active {
+  color: blue;
+}
 
 .checkbox {
   margin-left: 1rem;

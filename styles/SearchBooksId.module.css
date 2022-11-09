@@ -1,11 +1,43 @@
+.container {
+  padding: 0.5rem;
+}
+
 .detailsContainer {
   background-color: white;
   border-radius: 5px;
-  margin: 0.5rem;
   padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.backIcon {
+.clickablesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.addBookButton {
+  background-color: #d81159;
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+  color: snow;
+  font-weight: 600;
+  margin: 0.2rem;
+}
+
+/* .backIcon {
   font-size: 3rem;
   margin: 1rem;
+} */
+
+.backLink {
+  margin: 1rem;
+  align-self: center;
+}
+
+@media (min-width: 600px){
+  .detailsContainer {
+    width: 600px;
+    margin: 0 auto;
+  }
 }

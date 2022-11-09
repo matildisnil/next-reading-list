@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { GiBookCover } from 'react-icons/gi'
 import { GrClose } from 'react-icons/gr';
-import { AiFillDelete } from 'react-icons/ai';
+import { AiOutlineDelete } from 'react-icons/ai';
 
 
 const ListBook = ({ item }) => {
@@ -59,7 +59,7 @@ const handleDelete = async (e) => {
         <p className={styles.itemTitle}>{item.title}</p>
         <p className={styles.itemAuthor}>{item.author}</p>
       </div>
-      <GrClose onClick={handleDelete} className={styles.deleteIcon} />
+      <AiOutlineDelete onClick={handleDelete} className={styles.deleteIcon} />
       
 
     </div>

@@ -42,7 +42,7 @@ const AddBook = () => {
 
     const submitSearch = async e => {
         e.preventDefault();
-        if (!searchValue){
+        if (!searchValue) {
             alert('Please supply a search value');
             return
         }
@@ -71,31 +71,32 @@ const AddBook = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.innerContainer}>
-                {!manualAddIsActive &&
-                    <form className={styles.googleSearchContainer} onSubmit={submitSearch}>
-                        <h2 className={styles.heading}>Add book</h2>
-                        <input
-                            onChange={handleSearch}
-                            type="text"
-                            value={searchValue}
-                            placeholder="Search"
-                            name="search"
-                            className={styles.inputElement}
-                        />
-                        <input  type="submit" value="Search on Google books" className={styles.googleBooksButton}/>
-                        <p className={styles.notFoundText}>Didn&apos;t find what you were looking for?</p>
-                    </form>}
-                {manualAddIsActive && <ManualAdd />}
-                <button onClick={toggleManualAddIsActive} className={styles.manualAddButton}>
-                    {manualAddIsActive ? 'Add with Google books' : 'Add manually'}
-                </button>
+            <div className={styles.topContainer}>
+                    {!manualAddIsActive &&
+                        <form className={styles.googleSearchContainer} onSubmit={submitSearch}>
+                            <h2 className={styles.heading}>Add a book</h2>
+                            <input
+                                onChange={handleSearch}
+                                type="text"
+                                value={searchValue}
+                                placeholder="Search"
+                                name="search"
+                                className={styles.inputElement}
+                            />
+                            <input type="submit" value="Search on Google books" className={styles.googleBooksButton} />
+                            <p className={styles.notFoundText}>Didn&apos;t find what you were looking for?</p>
+                        </form>}
+                    {manualAddIsActive && <ManualAdd />}
+                    <button onClick={toggleManualAddIsActive} className={styles.manualAddButton}>
+                        {manualAddIsActive ? 'Add with Google books' : 'Add manually'}
+                    </button>
 
+
+                <Link className={styles.backIconContainer} href="/">
+                    <MdArrowBack className="backIcon" />
+                    <p>Reading list</p>
+                </Link>
             </div>
-            <Link className={styles.backIconContainer} href="/">
-                <MdArrowBack className="backIcon" />
-                <p>Reading list</p>
-            </Link>
             <div className={styles.booklistContainer}>
                 {searchResults.length !== 0 && searchResults.map(book => <SearchResultBook key={book.googlebooks_id} bookId={book.googlebooks_id} />)}
             </div>

@@ -3,18 +3,18 @@
 .container {
   display: flex;
   flex-direction: column;
+  /* background-color: #ACD7EC; */
+}
+
+.topContainer {
+  /* background-color: #131200; */
+  /* background-color: #861657; */
   background-color: #ACD7EC;
-}
 
-.headingWrapper {
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  margin: 0 1rem 0.5rem 1rem;
-}
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  
 
-.heading {
-  font-size: 3rem;
 }
 
 .addBooks {
@@ -25,12 +25,9 @@
   transition: all .2s ease-in-out;
 }
 
-.addBooks:hover {
-  /* transform: scale(1.1); */
-}
-
 .addIcon {
   font-size: 7rem;
+  color: black;
   /* margin-right: 1rem; */
   transition: all .2s ease-in-out; 
 }
@@ -44,7 +41,7 @@
 }
 
 .addBooksText {
-  color: #006BA6;
+  color: black;
   text-decoration: underline;
 }
 
@@ -62,10 +59,10 @@
 }
 
 @media (min-width:400px){
-  .container {
+  /* .container {
       width: 400px;
       margin: 0 auto;
-  }
+  } */
   
   .addBooks:hover {
     transform: scale(1.05);
@@ -76,7 +73,6 @@
   }
   
   .addIcon {
-    font-size: 7rem;
     /* margin-right: 1rem; */
     transition: all .2s ease-in-out; 
   }
@@ -89,16 +85,12 @@
     transform: scale(1); 
   }
   
-  .addBooksText {
-    color: #006BA6;
-    text-decoration: underline;
-  } 
 }
 
 
 @media (min-width:600px){
   .extraContainer {
-    background-image: url("/books.avif");
+    /* background-image: url("/books.avif"); */
     /* background-attachment: fixed; */
 /*     background-repeat: no-repeat;
     background-position: center; */
@@ -106,7 +98,14 @@
   }
 
   .container {
-    width: 500px;
+/*     width: 500px; */
     min-height: 100vh;
+  }
+
+  .topContainer {
+    /* width: 100vw; */
+    width: 500px;
+    align-self: center;
+    padding: 1rem;
   }
 }

@@ -1,12 +1,26 @@
 .listContainer {
     display: flex;
     flex-direction: column;
+    /* background-color: #361D2E; */
+
+}
+
+@media (min-width: 400px){
+    .listContainer {
+        margin: 0 auto;
+        padding: 10px 10px;
+
+        /* background-color: #361D2E; */
+
+    }
 }
 
 @media (min-width: 800px){
     .listContainer {
-        width: 400px;
-        margin: 0 auto;
+        width: 600px;
+        padding: 10px 10px;
+        /* background-color: #ACD7EC; */
+        /* background-color: #861657; */
     }
 }
 
