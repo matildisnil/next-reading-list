@@ -27,7 +27,7 @@ const Book = () => {
       // const index = books.findIndex(book => book.id === uid)
       const bookRef = doc(db, 'Books', book.id);
       await deleteDoc(bookRef);
-      dispatch(removeBook(index));
+      dispatch(removeBook(book.id));
       router.push('/');
     } catch (err) {
       alert(err);
@@ -39,8 +39,8 @@ const Book = () => {
 
       {book && <BookDetails book={book} />}
       <div className={styles.iconContainer}>
-        <Link href="/"><MdArrowBack className={styles.backIcon} /></Link>
-        <AiFillDelete onClick={handleDelete} className={styles.deleteIcon} />
+        <Link href="/"><MdArrowBack className="backIcon" /></Link>
+        <AiFillDelete onClick={handleDelete} className="backIcon" />
       </div>
     </div>
   )

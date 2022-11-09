@@ -17,7 +17,7 @@ const BooksList = ({ readBoolean }) => {
     useEffect(() => {
         const tempArray = [];
 
-        if (userUid) {
+        if (userUid && books.length === 0) {
             console.log('books reloaded');
             const q = query(collection(db, "Books"), where("createdBy", "==", userUid));
             getDocs(q)

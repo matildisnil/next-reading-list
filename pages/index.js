@@ -12,6 +12,7 @@ const UnReadBooks = () => {
   }
 
   return (
+    <div className={styles.extraContainer}>
     <div className={styles.container}>
       <div className={styles.headingWrapper}>
 {/*         <h1 className={styles.heading}>Reading list</h1> */}
@@ -25,6 +26,7 @@ const UnReadBooks = () => {
         <button onClick={toggleReadBoolean} className={styles.toggleReadButton}>{readBoolean ? 'View list of un-read books' :'View list of read books'}</button>
       </div>
       <BooksList readBoolean={readBoolean} />
+    </div>
     </div>
   )
 }

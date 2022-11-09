@@ -3,3 +3,10 @@
     flex-direction: column;
 }
 
+@media (min-width: 800px){
+    .listContainer {
+        width: 400px;
+        margin: 0 auto;
+    }
+}
+

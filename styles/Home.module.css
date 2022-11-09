@@ -1,6 +1,9 @@
+
+
 .container {
   display: flex;
   flex-direction: column;
+  background-color: #ACD7EC;
 }
 
 .headingWrapper {
@@ -65,11 +68,11 @@
   }
   
   .addBooks:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   .addBooks:active {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
   
   .addIcon {
@@ -89,6 +92,21 @@
   .addBooksText {
     color: #006BA6;
     text-decoration: underline;
+  } 
+}
+
+
+@media (min-width:600px){
+  .extraContainer {
+    background-image: url("/books.avif");
+    /* background-attachment: fixed; */
+/*     background-repeat: no-repeat;
+    background-position: center; */
+    /* height: 100vh; */
   }
-  
+
+  .container {
+    width: 500px;
+    min-height: 100vh;
+  }
 }
