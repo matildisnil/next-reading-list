@@ -7,6 +7,17 @@
 
 .bookPage__upperDetails {
   display: flex;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.5em; 
+  margin: 0.83em 0;
+  font-weight: bold;
+}
+
+.upperText {
+  margin: 0.5rem 0;
 }
 
 .bookPage__detailsShortText {
@@ -14,9 +25,6 @@
   
 }
 
-.imageReplacer {
-  
-}
 
 .bookPage__backIcon {
   font-size: 3rem;

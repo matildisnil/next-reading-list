@@ -25,13 +25,14 @@ const LoggedIn = () => {
 
     return (
         <div>
-        { user ? (<div className={styles.innerContainer}>
-            <button className={styles.logoutButton} onClick={handleLogOut}>Log out</button>
-            <div className={styles.user}>{user}</div>
-        </div>)
-        :
-        <Link href="/">Go to login</Link>    
-    }
+            {user ? (<div className={styles.innerContainer}>
+                <button className={styles.logoutButton} onClick={handleLogOut}>Log out</button>
+                <div className={styles.user}>{user}</div>
+            </div>)
+                :
+                <Link href="/login"><button>Go to login</button></Link>
+            }
+
         </div>
     )
 }

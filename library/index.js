@@ -21,6 +21,7 @@ const handleAddBook = async (e, newBookState, dispatch, userUid) => {
       review: '',
       rating: '',
       createdBy: userUid,
+      createdAt: new Date(),
     }
     const docRef = await addDoc(collection(db, "Books"), newBook);
     // alert("Document written with ID: " + docRef.id);

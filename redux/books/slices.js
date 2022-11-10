@@ -8,7 +8,7 @@ export const booksSlice = createSlice({
     initialState,
     reducers: {
         loadBooks: (state, action) => action.payload,
-        addBook: (state, action) => [...state, action.payload],
+        addBook: (state, action) => [action.payload, ...state],
         toggleBook: (state, action) => {
             // const index = action.payload;
             const uid = action.payload;

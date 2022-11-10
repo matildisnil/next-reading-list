@@ -6,8 +6,8 @@
 
 
 .topContainer {
-  background-color: #FFB8DE;
-  /* background-color: #ACD7EC; */
+  /* background-color: #FFB8DE; */
+  background-color: #ACD7EC;
 
   /* background-color: #e1bee7; */
   display: flex;
@@ -22,6 +22,9 @@
 
 .heading {
   align-self: center;
+  font-size: 1.5em;
+  margin: 0.83em 0;
+  font-weight: bold;
 }
 
 .inputElement {
@@ -45,6 +48,7 @@
 
 .notFoundText {
   align-self: center;
+  margin: 1em 0;
 }
 
 .manualAddButton {
@@ -52,12 +56,13 @@
   background-color: snow;
   border-radius: 2px;
   align-self: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .backIconContainer {
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .booklistContainer {
@@ -69,7 +74,7 @@
 @media (min-width:400px){
   .topContainer {
     width: 400px;
-    border-radius: 5px;
+    border-radius: 3px;
     /* margin: 0 auto; */
   }
 }

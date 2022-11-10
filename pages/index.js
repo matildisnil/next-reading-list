@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { MdAdd } from 'react-icons/md';
 import styles from '../styles/Home.module.css'
 
-const UnReadBooks = () => {
+const Home = () => {
   const [readBoolean, setReadBoolean] = useState(false)
 
   const toggleReadBoolean = () => {
@@ -12,7 +12,6 @@ const UnReadBooks = () => {
   }
 
   return (
-    <div className={styles.extraContainer}>
       <div className={styles.container}>
         <div className={styles.topContainer}>
           <Link href="/addbook" className={styles.addBooks}>
@@ -25,8 +24,7 @@ const UnReadBooks = () => {
         </div>
         <BooksList readBoolean={readBoolean} />
       </div>
-    </div>
   )
 }
 
-export default UnReadBooks
+export default Home

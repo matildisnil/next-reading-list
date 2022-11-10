@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { query, where } from "firebase/firestore";
+import { query, where, orderBy } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 import { loadBooks } from '../redux/books/slices';
@@ -26,7 +26,7 @@ const BooksList = ({ readBoolean }) => {
                     entries.forEach(entry => {
                         tempArray.push({ ...entry.data(), id: entry.id });
                     })
-                    dispatch(loadBooks(tempArray));
+                    dispatch(loadBooks(tempArray.sort((a, b) => b.createdAt - a.createdAt)));
                 })
                 .catch(err => {
                     alert(err);
@@ -36,13 +36,11 @@ const BooksList = ({ readBoolean }) => {
     }, [userUid]);
 
     return (
-        <>
-        {books.length !== 0 && <div className={styles.listContainer}>
+        <div className={styles.listContainer}>
             {books.map(item => {
                 return <ListBook item={item} key={item.id} />
             })}
-        </div>}
-        </>
+        </div>
     )
 }
 

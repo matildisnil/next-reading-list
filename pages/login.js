@@ -13,33 +13,12 @@ export default function Home() {
   const dispatch = useDispatch();
   const reduxUser = useSelector((state) => state)?.user?.user?.email;
 
-  // useEffect(() => {
-  //   const unSubscribe = onAuthStateChanged(auth, async (user) => {
-  //     if (user) {
-  //       // setUser(user);
-  //       console.log(user.uid, 'useeffect')
-  //       dispatch(
-  //         login({
-  //           email: user.email,
-  //           uid: user.uid,
-  //         })
-  //       );
-  //       router.push('/');
-  //     }
-  //   });
-  //   // return () => { };
-  //   return unSubscribe();
-  // }, []);
-
   const handleLogin = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         // const token = credential.accessToken;
-        // The signed-in user info.
-        // setUser(result.user);
-        // console.log(result.user.uid)
         dispatch(
           login({
             email: result.user.email,
@@ -60,31 +39,24 @@ export default function Home() {
   }
 
   const handleNavigate = () => {
-    router.push('/readinglist');
+    router.push('/');
   }
-
-//   const handleLogOut = () => {
-//     signOut(auth).then(() => {
-//       // setUser(null);
-//       dispatch(logout());
-//       router.push('/');
-//     }).catch(err => {
-//       alert(err.message);
-//     })
-//   }
-
 
 // do something about this, I think we ever only see the loginbutton
   return (
     <div className={styles.container}>
       {
         !reduxUser ?
+        <div className={styles.loginContainer}>
+          <h1 className={styles.header}>Welcome to Please-Read-Me</h1>
+          <h2 className={styles.subHeader}>- an app to keep track of the books in your life</h2>
           <button onClick={handleLogin} className={styles.loginButton}>Log in with Google</button>
+        </div>
           :
-          <div>
+          <div className={styles.loggedIn}>
             {/* <button onClick={handleLogOut}>Log out</button> */}
-            <button onClick={handleNavigate}>Go to list</button>
             <div>You are logged in as {reduxUser}</div>
+            <button onClick={handleNavigate} className={styles.goToListButton}>Go to list</button>
           </div>
       }
     </div>

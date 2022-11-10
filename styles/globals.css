@@ -1,3 +1,15 @@
+html, body, div, span, 
+h1, h2, h3, h4, h5, h6, p, 
+a, img, 
+form, nav, button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
 html,
 body {
   padding: 0;
@@ -9,6 +21,14 @@ body {
 /* body {
   background-color: #ACD7EC;
 } */
+
+body {
+  background-color: #ACD7EC;
+  background-image: url("/books.png");
+  min-height: 100vh;
+}
+
+
 
 a {
   color: inherit;
@@ -55,15 +75,10 @@ button:active {
 }
 
 
-
-
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+@media (min-width: 900px){
   body {
-    color: white;
-    background: black;
+    background-attachment: fixed;
   }
-} */
+}
+
+
