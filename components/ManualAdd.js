@@ -81,7 +81,7 @@ const ManualAdd = () => {
         className={styles.inputElement}
       />
 
-      <input className={styles.manualAddButton} type="submit" value="Add book"/>
+      <button className={styles.manualAddButton} type="submit">Add book</button>
     </form>)
 }
 

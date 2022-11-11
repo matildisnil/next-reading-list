@@ -18,3 +18,11 @@
   color: snow;
   border-radius: 2px;
 }
+
+.googleBooksButton:hover {
+  transform: none;
+}
+
+.googleBooksButton:active {
+    transform: none;
+}
