@@ -83,7 +83,7 @@ const AddBook = () => {
                                 name="search"
                                 className={styles.inputElement}
                             />
-                            <input type="submit" value="Search on Google books" className={styles.googleBooksButton} />
+                            <button type="submit" className={styles.googleBooksButton} >Search on Google books</button>
                             <p className={styles.notFoundText}>Didn&apos;t find what you were looking for?</p>
                         </form>}
                     {manualAddIsActive && <ManualAdd />}
