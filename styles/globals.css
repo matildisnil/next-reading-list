@@ -16,6 +16,9 @@ body {
   margin: 0;
   font-family: Cantarell, Ubuntu, Oxygen, Segoe UI, Roboto, -apple-system, BlinkMacSystemFont,
   Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #ACD7EC;
+  background-image: url("/books.png");
+  min-height: 100vh;
 }
 
 /* body {
