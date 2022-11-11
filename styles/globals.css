@@ -21,7 +21,7 @@ body {
   font-family: Cantarell, Ubuntu, Oxygen, Segoe UI, Roboto, -apple-system, BlinkMacSystemFont,
   Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #ACD7EC;
-  background-image: url("/books.png");
+  background-image: url("/ezgif_books.png");
   min-height: 100vh;
 }
 
@@ -31,7 +31,7 @@ body {
 
 body {
   background-color: #ACD7EC;
-  background-image: url("/books.png");
+  background-image: url("/ezgif_books.png");
   /* min-height: 100vh; */
 }
 
