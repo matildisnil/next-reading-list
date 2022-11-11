@@ -19,10 +19,14 @@
   border-radius: 2px;
 }
 
-.googleBooksButton:hover {
+.manualAddButton:hover {
   transform: none;
+  background-color: #d81159;
+
 }
 
-.googleBooksButton:active {
-    transform: none;
+.manualAddButton:active {
+  transform: none;
+  background-color: #006BA6;
+
 }
