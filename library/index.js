@@ -25,7 +25,7 @@ const handleAddBook = async (e, newBookState, dispatch, userUid) => {
     }
     const docRef = await addDoc(collection(db, "Books"), newBook);
     // alert("Document written with ID: " + docRef.id);
-    dispatch(addBook({ ...newBook, id: docRef.id }));
+    dispatch(addBook({ ...newBook, createdAt: newBook.createdAt.toString() ,id: docRef.id }));
     // setNewBookState({
     //     title: '',
     //     author: '',

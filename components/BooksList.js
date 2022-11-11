@@ -20,13 +20,13 @@ const BooksList = ({ readBoolean }) => {
         // this could possibly be the cause of hydration errors?
         if (userUid /* && books.length === 0 */) {
             console.log('books reloaded');
-            const q = query(collection(db, "Books"), where("createdBy", "==", userUid));
+            const q = query(collection(db, "Books"), where("createdBy", "==", userUid), orderBy("createdAt", "desc"));
             getDocs(q)
                 .then((entries) => {
                     entries.forEach(entry => {
-                        tempArray.push({ ...entry.data(), id: entry.id });
+                        tempArray.push({ ...entry.data(), createdAt: entry.data().createdAt.toString(), id: entry.id });
                     })
-                    dispatch(loadBooks(tempArray.sort((a, b) => b.createdAt - a.createdAt)));
+                    dispatch(loadBooks(tempArray/* .sort((a, b) => b.createdAt - a.createdAt) */));
                 })
                 .catch(err => {
                     alert(err);
