@@ -9,6 +9,9 @@ form, nav, button, input[type=button] {
 	font: inherit;
 	vertical-align: baseline;
 }
+input[type=button]{
+  -webkit-border-radius:0px;
+}
 
 html,
 body {
