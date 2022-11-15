@@ -3,19 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { query, where, orderBy } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
-import { loadBooks } from '../redux/books/slices';
+import { loadBooks, selectBookState } from '../redux/books/slices';
+import { selectUser } from '../redux/login/slices';
 // import AddBook from './AddBook';
 import styles from '../styles/BooksList.module.css'
 import ListBook from './ListBook';
 
 
 const BooksList = ({ readBoolean }) => {
-    const books = useSelector(state => state).books.filter(book => book.read === readBoolean);
-    const userUid = useSelector(state => state)?.user?.user?.uid
+    const books = useSelector(selectBookState).filter(book => book.read === readBoolean);
+    // const books = useSelector(state => state).books.filter(book => book.read === readBoolean);
+    // const userUid = useSelector(state => state)?.user?.user?.uid
+    const userUid = useSelector(selectUser)?.uid;
     const dispatch = useDispatch();
 
     useEffect(() => {
-
         const tempArray = [];
         // this could possibly be the cause of hydration errors?
         if (userUid /* && books.length === 0 */) {
@@ -26,7 +28,7 @@ const BooksList = ({ readBoolean }) => {
                     entries.forEach(entry => {
                         tempArray.push({ ...entry.data(), createdAt: entry.data().createdAt.toString(), id: entry.id });
                     })
-                    dispatch(loadBooks(tempArray/* .sort((a, b) => b.createdAt - a.createdAt) */));
+                    dispatch(loadBooks(tempArray));
                 })
                 .catch(err => {
                     alert(err);

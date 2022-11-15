@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { handleAddBook } from '../library';
 import styles from '../styles/ManualAdd.module.css'
+import { selectUser } from '../redux/login/slices';
 
 const ManualAdd = () => {
   const dispatch = useDispatch();
-  const userUid = useSelector((state) => state)?.user?.user?.uid;
+  // const userUid = useSelector((state) => state)?.user?.user?.uid;
+  const userUid = useSelector(selectUser)?.uid;
 
   const initialNewBookState = {
     title: '',

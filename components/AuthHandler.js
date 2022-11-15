@@ -5,60 +5,65 @@ import { signOut, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from
 import { useRouter } from 'next/router'
 import { login, logout } from '../redux/login/slices'
 
-// import { query, where } from "firebase/firestore";
-// import { collection, getDocs } from "firebase/firestore";
-// import { db } from '../firebase';
-// import { loadBooks } from '../redux/books/slices';
+import { query, where, orderBy } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from '../firebase';
+import { loadBooks } from '../redux/books/slices';
+import { selectUser } from '../redux/login/slices';
 
 
 export default function AuthHandler({ children }) {
-    const router = useRouter();
-    // const [user, setUser] = useState(null);
-    const dispatch = useDispatch();
-    //   const reduxUser = useSelector((state) => state)?.user?.user?.email;
+  const router = useRouter();
+  // const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+  // const userUid = useSelector(selectUser)?.uid;
+  //   const reduxUser = useSelector((state) => state)?.user?.user?.email;
 
-    useEffect(() => {
+  useEffect(() => {
 
-        const unSubscribe = onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                // setUser(user);
-                dispatch(
-                    login({
-                        email: user.email,
-                        uid: user.uid,
-                    })
-                );
-                // router.push('/');
-                console.log('useeffectgate authhandler');
-                // const tempArray = [];
+    const unSubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // setUser(user);
+        dispatch(
+          login({
+            email: user.email,
+            uid: user.uid,
+          })
+        );
+        // router.push('/');
+        console.log('useeffectgate authhandler');
+        // const tempArray = [];
 
-                // if (user.uid) {
-                //     console.log('books reloaded');
-                //     const q = query(collection(db, "Books"), where("createdBy", "==", user.uid));
-                //     getDocs(q)
-                //         .then((entries) => {
-                //             entries.forEach(entry => {
-                //                 tempArray.push({ ...entry.data(), id: entry.id });
-                //             })
-                //             dispatch(loadBooks(tempArray));
-                //         })
-                //         .catch(err => {
-                //             alert(err);
-                //         })
-                //     // }
-                // }
-            }
-            else {
-                router.push('/loading');
-            }
-        });
-        // return () => { };
-        return unSubscribe();
-    }, []);
+        // if (user.uid /* && books.length === 0 */) {
+        //   const tempArray = [];
+        //   console.log('books reloaded');
+        //   const q = query(collection(db, "Books"), where("createdBy", "==", user.uid), orderBy("createdAt", "desc"));
+        //   getDocs(q)
+        //     .then((entries) => {
+        //       entries.forEach(entry => {
+        //         tempArray.push({ ...entry.data(), createdAt: entry.data().createdAt.toString(), id: entry.id });
+        //       })
+        //       dispatch(loadBooks(tempArray));
+        //     })
+        //     .catch(err => {
+        //       alert(err);
+        //     })
+        //   // }
+        // }
+      }
+      else {
+        router.push('/loading');
+      }
+    });
 
-    return (
-        <>
-            {children}
-        </>
-    )
+
+    // return () => { };
+    return unSubscribe();
+  }, []);
+
+  return (
+    <>
+      {children}
+    </>
+  )
 }

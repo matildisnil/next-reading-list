@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../redux/login/slices'
-
+import { selectUser } from '../redux/login/slices';
 import { provider, auth } from '../firebase'
 import { signOut, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'next/router'
@@ -11,7 +11,7 @@ export default function Home() {
   const router = useRouter();
   // const [user, setUser] = useState(null);
   const dispatch = useDispatch();
-  const reduxUser = useSelector((state) => state)?.user?.user?.email;
+  const reduxUser = useSelector(selectUser)?.email;
 
   const handleLogin = () => {
     signInWithPopup(auth, provider)

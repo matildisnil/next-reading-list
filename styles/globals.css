@@ -25,17 +25,6 @@ body {
   min-height: 100vh;
 }
 
-/* body {
-  background-color: #ACD7EC;
-} */
-
-body {
-  background-color: #ACD7EC;
-  background-image: url("/ezgif_books.png");
-  /* min-height: 100vh; */
-}
-
-
 
 a {
   color: inherit;

@@ -21,4 +21,6 @@ export const searchResultsBooksSlice = createSlice({
 })
 
 export const { addSearchResultBooks } = searchResultsBooksSlice.actions;
+export const selectSearchResultBookState = state => state?.searchResultBooks;
+
 export default searchResultsBooksSlice.reducer;

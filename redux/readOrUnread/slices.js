@@ -23,3 +23,4 @@ export const readOrUnreadSlice = createSlice({
 
 export const { toggleReadOrUnread } = readOrUnreadSlice.actions;
 export default readOrUnreadSlice.reducer;
+export const selectReadOrUnread = state => state?.readOrUnread;

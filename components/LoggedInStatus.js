@@ -6,12 +6,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import styles from '../styles/LoggedInStatus.module.css'
+import { selectUser } from '../redux/login/slices';
 
 
 
 const LoggedIn = () => {
     const router = useRouter();
-    const user = useSelector((state) => state)?.user?.user?.email;
+    // const user = useSelector((state) => state)?.user?.user?.email;
+    const user = useSelector(selectUser)?.email;
     const dispatch = useDispatch();
     const handleLogOut = () => {
         signOut(auth).then(() => {
@@ -32,7 +34,6 @@ const LoggedIn = () => {
                 :
                 <Link href="/login"><button>Go to login</button></Link>
             }
-
         </div>
     )
 }

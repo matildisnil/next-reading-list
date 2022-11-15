@@ -4,25 +4,28 @@ import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = { user: null };
 
-export const loggedInSlice = createSlice({
-  name: "loggedInState",
+export const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {
     login: (state, action) => {state.user = action.payload},
-    logout: (state) => { state.user = null },
+    // handling logout in rootreducer instead
+    // logout: (state) => { state.user = null },
+    logout: state => {
+    }
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
       console.log('HYDRATE', state, action.payload);
       return {
         ...state,
-        ...action.payload.auth,
+        ...action.payload.user,
       };
     }
   }
 });
-export const { login, logout } = loggedInSlice.actions;
-export default loggedInSlice.reducer;
+export const { login, logout } = userSlice.actions;
+export default userSlice.reducer;
 
 // behöver jag detta
-export const selectUser = (state) => state.loggedInState.user;
+export const selectUser = (state) => state.user.user;
