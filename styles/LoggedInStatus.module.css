@@ -1,15 +1,33 @@
+.container {
+  align-self: center;
+}
+
 .logoutButton {
+  display: flex;
   margin: 0.5rem;
   padding: 0.1rem 0.3rem;
   border-radius: 2px;
+  white-space: nowrap
 }
 
 .innerContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .user {
   font-size: 0.8rem;
+}
+
+.photo {
+  border-radius: 30px;
+  margin-top: 0.5rem;
+
+}
+
+@media (min-width: 500px){
+  .photo {
+    display: none;
+  } 
 }

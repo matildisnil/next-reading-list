@@ -9,6 +9,10 @@ const nextConfig = {
         hostname: 'books.google.com',
         pathname: '/books/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
     ],
   },
 }

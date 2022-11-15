@@ -21,7 +21,7 @@ const BooksList = ({ readBoolean }) => {
         const tempArray = [];
         // this could possibly be the cause of hydration errors?
         if (userUid /* && books.length === 0 */) {
-            console.log('books reloaded');
+            // console.log('books reloaded');
             const q = query(collection(db, "Books"), where("createdBy", "==", userUid), orderBy("createdAt", "desc"));
             getDocs(q)
                 .then((entries) => {

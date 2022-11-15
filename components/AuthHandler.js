@@ -27,11 +27,13 @@ export default function AuthHandler({ children }) {
         dispatch(
           login({
             email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
             uid: user.uid,
           })
         );
         // router.push('/');
-        console.log('useeffectgate authhandler');
+        // console.log('useeffectgate authhandler');
         // const tempArray = [];
 
         // if (user.uid /* && books.length === 0 */) {

@@ -5,6 +5,7 @@ import { signOut } from 'firebase/auth';
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from '../styles/LoggedInStatus.module.css'
 import { selectUser } from '../redux/login/slices';
 
@@ -12,8 +13,8 @@ import { selectUser } from '../redux/login/slices';
 
 const LoggedIn = () => {
     const router = useRouter();
-    // const user = useSelector((state) => state)?.user?.user?.email;
-    const user = useSelector(selectUser)?.email;
+    const user = useSelector(selectUser);
+    // const displayName = user?.displayName
     const dispatch = useDispatch();
     const handleLogOut = () => {
         signOut(auth).then(() => {
@@ -28,8 +29,8 @@ const LoggedIn = () => {
     return (
         <div>
             {user ? (<div className={styles.innerContainer}>
+                <Image src={user.photoURL} width="48" height="48" className={styles.photo} />
                 <button className={styles.logoutButton} onClick={handleLogOut}>Log out</button>
-                <div className={styles.user}>{user}</div>
             </div>)
                 :
                 <Link href="/login"><button>Go to login</button></Link>

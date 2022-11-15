@@ -15,5 +15,15 @@
     margin: 0 1rem;
 
     font-weight: bold;
+}
 
+.photo {
+    border-radius: 30px;
+    display: none;
+  }
+
+@media (min-width: 500px){
+    .photo {
+        display: block;
+    }
 }
