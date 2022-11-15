@@ -27,9 +27,9 @@ const LoggedIn = () => {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             {user ? (<div className={styles.innerContainer}>
-                <Image src={user.photoURL} width="48" height="48" className={styles.photo} />
+                {user?.photoURL && <Image src={user.photoURL} width="48" height="48" className={styles.photo} />}
                 <button className={styles.logoutButton} onClick={handleLogOut}>Log out</button>
             </div>)
                 :

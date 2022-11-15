@@ -27,8 +27,8 @@ export default function AuthHandler({ children }) {
         dispatch(
           login({
             email: user.email,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
+            displayName: user?.displayName,
+            photoURL: user?.photoURL,
             uid: user.uid,
           })
         );
