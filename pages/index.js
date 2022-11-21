@@ -55,7 +55,6 @@ const Home = () => {
   // }
 
   const handleNavigate = () => {
-
     router.push("/books/add");
     if (readBoolean === true){
       dispatch(toggleReadOrUnread());

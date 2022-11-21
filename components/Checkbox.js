@@ -25,8 +25,7 @@ const Checkbox = ({ label, item }) => {
   return (
     <div className={styles.checkboxWrapper}>
       <label>
-        <input type="checkbox" /* checked={isChecked} onChange={() => setIsChecked((prev) => !prev)} */ defaultChecked={item.read} onClick={(e) => handleCheckbox(e, item.id)} className={styles.input /* + ' ' + checked && styles.checked */} /* className={isChecked && styles.checked} */
- />
+        <input type="checkbox" defaultChecked={item.read} onClick={(e) => handleCheckbox(e, item.id)} className={styles.input} />
         <span>{label}</span>
       </label>
       <p>{item.read ? "Selected" : "Unchecked"}</p>

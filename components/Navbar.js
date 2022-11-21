@@ -15,7 +15,7 @@ const Navbar = () => {
     const readOrUnread = useSelector(selectReadOrUnread);
     return (
         <div className={styles.navbar}>
-            {user?.photoURL && <Image src={user.photoURL} width="48" height="48" className={styles.photo} />}
+            {user?.photoURL && <Image src={user.photoURL} width="48" height="48" className={styles.photo} alt="avatar" />}
             <h2 className={styles.text}>{readOrUnread ? "Thank-you-for-reading-me" : "Please-Read-Me"}</h2>
             <LoggedInStatus />
         </div>
