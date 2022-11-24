@@ -32,7 +32,7 @@ const SearchBook = () => {
   }
 
   useEffect(() => {
-    if(!book){
+    if (!book) {
       fetchFallbackBook();
     }
   }, [])
@@ -42,7 +42,14 @@ const SearchBook = () => {
 
   const addBook = e => {
     handleAddBook(e, book || fallbackBook, dispatch, userUid);
-    dispatch(toggleAddedToTrue(router.query.id));
+    if (book) {
+      dispatch(toggleAddedToTrue(router.query.id));
+    } else {
+      setFallbackBook(prev => {
+        return { ...prev, added: true }
+      }
+      )
+    }
   }
 
   return (
@@ -51,7 +58,7 @@ const SearchBook = () => {
         {(book || fallbackBook) && <BookDetails book={book || fallbackBook} />}
         <div className={styles.clickablesContainer}>
           <Link className={styles.backLink} href="/books/add"><MdArrowBack className="backIcon" /></Link>
-          {book.added ? <div>Book added</div> : <button className={styles.addBookButton} onClick={addBook}>Add book</button>}
+          {(book?.added || fallbackBook?.added) ? <div>Book added</div> : <button className={styles.addBookButton} onClick={addBook}>Add book</button>}
         </div>
       </div>
     </div>
