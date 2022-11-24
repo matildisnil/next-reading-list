@@ -6,7 +6,6 @@ import { selectUser } from '../redux/login/slices';
 
 const ManualAdd = () => {
   const dispatch = useDispatch();
-  // const userUid = useSelector((state) => state)?.user?.user?.uid;
   const userUid = useSelector(selectUser)?.uid;
 
   const initialNewBookState = {
@@ -16,9 +15,6 @@ const ManualAdd = () => {
     published: '',
     description: '',
   }
-
-  const [bookAdded, setBookAdded] = useState(false);
-
 
   const [newBookState, setNewBookState] = useState(initialNewBookState);
 
@@ -31,7 +27,7 @@ const ManualAdd = () => {
 
   const handleAdd = e => {
     e.preventDefault();
-    if(newBookState.title.length === 0){
+    if (newBookState.title.length === 0) {
       alert('Please provide a title');
       return;
     }
@@ -82,7 +78,6 @@ const ManualAdd = () => {
         name="description"
         className={styles.inputElement}
       />
-
       <button className={styles.manualAddButton} type="submit">Add book</button>
     </form>)
 }

@@ -9,34 +9,30 @@ import Image from 'next/image';
 import styles from '../styles/LoggedInStatus.module.css'
 import { selectUser } from '../redux/login/slices';
 
-
-
 const LoggedIn = () => {
-    const router = useRouter();
-    const user = useSelector(selectUser);
-    // const displayName = user?.displayName
-    const dispatch = useDispatch();
-    const handleLogOut = () => {
-        signOut(auth).then(() => {
-            // setUser(null);
-            dispatch(logout());
-            router.push('/');
-        }).catch(err => {
-            alert(err.message);
-        })
-    }
+  const router = useRouter();
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const handleLogOut = () => {
+    signOut(auth).then(() => {
+      dispatch(logout());
+      router.push('/');
+    }).catch(err => {
+      alert(err.message);
+    })
+  }
 
-    return (
-        <div className={styles.container}>
-            {user ? (<div className={styles.innerContainer}>
-                {user?.photoURL && <Image src={user.photoURL} width="48" height="48" className={styles.photo} alt="avatar"/>}
-                <button className={styles.logoutButton} onClick={handleLogOut}>Log out</button>
-            </div>)
-                :
-                <Link href="/login"><button>Go to login</button></Link>
-            }
-        </div>
-    )
+  return (
+    <div className={styles.container}>
+      {user ? (<div className={styles.innerContainer}>
+        {user?.photoURL && <Image src={user.photoURL} width="48" height="48" className={styles.photo} alt="avatar" />}
+        <button className={styles.logoutButton} onClick={handleLogOut}>Log out</button>
+      </div>)
+        :
+        <Link href="/login"><button className={styles.goToLogin}>Go to login</button></Link>
+      }
+    </div>
+  )
 }
 
 export default LoggedIn

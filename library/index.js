@@ -6,15 +6,6 @@ import { addBook } from '../redux/books/slices';
 const handleAddBook = async (e, newBookState, dispatch, userUid) => {
   e.stopPropagation();
   try {
-    // const newBook = {
-    //     title: newBookState.title,
-    //     author: newBookState.author,
-    //     read: false,
-    //     review: '',
-    //     rating: '',
-    //     createdBy: userUid,
-    //     // createdAt: serverTimestamp(),
-    // }
     const newBook = {
       ...newBookState,
       read: false,
@@ -24,13 +15,7 @@ const handleAddBook = async (e, newBookState, dispatch, userUid) => {
       createdAt: new Date(),
     }
     const docRef = await addDoc(collection(db, "Books"), newBook);
-    // alert("Document written with ID: " + docRef.id);
-    dispatch(addBook({ ...newBook, createdAt: newBook.createdAt.toString() ,id: docRef.id }));
-    // setNewBookState({
-    //     title: '',
-    //     author: '',
-    // })
-
+    dispatch(addBook({ ...newBook, createdAt: newBook.createdAt.toString(), id: docRef.id }));
   } catch (err) {
     alert(err);
   }

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectSearchResultBooksState } from '../../../redux/searchResultBooks/slices';
 import styles from '../../../styles/AddBook.module.css'
 import SearchResultBook from '../../../components/SearchResultBook';
-import { handleAddBook } from '../../../library';
 import { addSearchResultBooks } from '../../../redux/searchResultBooks/slices';
 import { MdArrowBack } from 'react-icons/md'
 import Link from 'next/link';
@@ -21,10 +20,12 @@ const AddBook = () => {
 
   const submitSearch = async e => {
     e.preventDefault();
+
     if (!searchValue) {
       alert('Please supply a search value');
       return
     }
+
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}`)
     const parsedResponse = await response.json();
 
@@ -38,8 +39,10 @@ const AddBook = () => {
         smallThumbnailLink: book.volumeInfo?.imageLinks?.smallThumbnail || '',
         thumbnailLink: book.volumeInfo?.imageLinks?.thumbnail || '',
         googlebooks_id: book.id,
+        added: false,
       }
     })
+
     dispatch(addSearchResultBooks(formattedBooks));
   }
 
@@ -74,7 +77,7 @@ const AddBook = () => {
         </Link>
       </div>
       <div className={styles.booklistContainer}>
-        {searchResults.length !== 0 && searchResults.map(book => <SearchResultBook key={book.googlebooks_id} bookId={book.googlebooks_id} />)}
+        {searchResults.length !== 0 && searchResults.map(book => <SearchResultBook key={book.googlebooks_id} book={book} />)}
       </div>
     </div>
   )

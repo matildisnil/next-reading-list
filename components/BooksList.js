@@ -1,21 +1,12 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { query, where, orderBy } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from '../firebase';
-import { loadBooks, selectBookState } from '../redux/books/slices';
-import { selectUser } from '../redux/login/slices';
-// import AddBook from './AddBook';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectBookState } from '../redux/books/slices';
 import styles from '../styles/BooksList.module.css'
 import ListBook from './ListBook';
 
-
 const BooksList = ({ readBoolean }) => {
     const books = useSelector(selectBookState).filter(book => book.read === readBoolean);
-    // const books = useSelector(state => state).books.filter(book => book.read === readBoolean);
-    // const userUid = useSelector(state => state)?.user?.user?.uid
-    const userUid = useSelector(selectUser)?.uid;
-    const dispatch = useDispatch();
+    
     // if I do want state to update from the database when navigating from addbook to here, I should do this here instead
     // useEffect(() => {
     //     const tempArray = [];

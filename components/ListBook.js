@@ -7,64 +7,52 @@ import styles from '../styles/ListBook.module.css'
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { GiBookCover } from 'react-icons/gi'
-import { GrClose } from 'react-icons/gr';
 import { AiOutlineDelete } from 'react-icons/ai';
-import Checkbox from './Checkbox';
-
 
 const ListBook = ({ item }) => {
-
   const dispatch = useDispatch();
   const router = useRouter();
 
   const goToDetails = (e, id) => {
     e.stopPropagation();
     router.push(`/books/${id}`);
-}
+  }
 
   const handleCheckbox = async (e, uid) => {
     e.stopPropagation();
     try {
-        // const index = books.findIndex(book => book.id === uid)
-        const bookRef = doc(db, 'Books', uid);
-        await setDoc(bookRef, { read: !item.read }, { merge: true });
-        dispatch(toggleBook(uid));
+      const bookRef = doc(db, 'Books', uid);
+      await setDoc(bookRef, { read: !item.read }, { merge: true });
+      dispatch(toggleBook(uid));
     } catch (err) {
-        alert(err);
+      alert(err);
     }
-}
-
-const handleDelete = async (e) => {
-  e.stopPropagation();
-  try {
-    // const index = books.findIndex(book => book.id === uid)
-    const bookRef = doc(db, 'Books', item.id);
-    await deleteDoc(bookRef);
-    dispatch(removeBook(item.id));
-  } catch (err) {
-    alert(err);
   }
-}
 
+  const handleDelete = async (e) => {
+    e.stopPropagation();
+    try {
+      const bookRef = doc(db, 'Books', item.id);
+      await deleteDoc(bookRef);
+      dispatch(removeBook(item.id));
+    } catch (err) {
+      alert(err);
+    }
+  }
 
   return (
     <div onClick={(e) => goToDetails(e, item.id)} className={styles.book}>
-            {item.smallThumbnailLink ?
+      {item.smallThumbnailLink ?
         <Image src={item.smallThumbnailLink} width="64" height="100" alt={`the book ${item.title}`} />
         :
         <div className={styles.imageReplacer}><GiBookCover className={styles.bookIcon} /></div>
       }
-
       <input type="checkbox" defaultChecked={item.read} onClick={(e) => handleCheckbox(e, item.id)} className={styles.checkbox} />
-      {/* <Checkbox label="second checkbox" item={item} /> */}
-
       <div className={styles.bookTextContainer}>
         <p className={styles.itemTitle}>{item.title}</p>
         <p className={styles.itemAuthor}>{item.author}</p>
       </div>
       <AiOutlineDelete onClick={handleDelete} className={styles.deleteIcon} />
-      
-
     </div>
   )
 }

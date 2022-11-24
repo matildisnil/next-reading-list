@@ -10,7 +10,6 @@ export const booksSlice = createSlice({
         loadBooks: (state, action) => action.payload,
         addBook: (state, action) => [action.payload, ...state],
         toggleBook: (state, action) => {
-            // const index = action.payload;
             const uid = action.payload;
             const found = state.find(book => book.id === uid);
             found.read = !found.read;
@@ -23,7 +22,6 @@ export const booksSlice = createSlice({
     },
     extraReducers: {
         [HYDRATE]: (state, action) => {
-            // console.log('HYDRATE', state, action.payload);
             return {
                 ...state,
                 ...action.payload.books,
@@ -34,4 +32,6 @@ export const booksSlice = createSlice({
 
 export const { loadBooks, addBook, toggleBook, removeBook } = booksSlice.actions;
 export const selectBookState = state => state?.books;
+export const selectOneBook = (state, id) => state?.books?.find(book => book.id === id);
+
 export default booksSlice.reducer;

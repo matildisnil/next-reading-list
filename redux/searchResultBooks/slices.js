@@ -8,6 +8,11 @@ export const searchResultsBooksSlice = createSlice({
     initialState,
     reducers: {
         addSearchResultBooks: (state, action) => action.payload,
+        toggleAddedToTrue: (state, action) => {
+          const uid = action.payload;
+          const found = state.find(book => book.googlebooks_id === uid);
+          found.added = true;
+      },
     },
     extraReducers: {
         [HYDRATE]: (state, action) => {
@@ -20,9 +25,7 @@ export const searchResultsBooksSlice = createSlice({
       }
 })
 
-export const { addSearchResultBooks } = searchResultsBooksSlice.actions;
+export const { addSearchResultBooks, toggleAddedToTrue } = searchResultsBooksSlice.actions;
 export const selectSearchResultBooksState = state => state?.searchResultBooks;
 export const selectSearchResultOneBookState = (state, id) => state?.searchResultBooks?.find(book => book.googlebooks_id === id);
-
-
 export default searchResultsBooksSlice.reducer;

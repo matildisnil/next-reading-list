@@ -9,9 +9,7 @@ const BookDetails = ({ book }) => {
       <div className={styles.bookPage__upperDetails}>
         {book.thumbnailLink &&
           <Image src={book.thumbnailLink} width={128} height={200} alt={`The book ${book.title}`} />
-
         }
-
         <div className={styles.bookPage__detailsShortText}>
           <h2 className={styles.title}>{book.title}</h2>
           <p className={styles.upperText}>Author: {book.author}</p>

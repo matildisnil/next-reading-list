@@ -22,7 +22,6 @@ function MyApp({ Component, ...rest }) {
   }
 
   if (loading) return <Loading />;
-  // if (!user) return <Login />;
 
   return (
     <Provider store={store}>

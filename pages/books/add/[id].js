@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { selectSearchResultBooksState, selectSearchResultOneBookState } from '../../../redux/searchResultBooks/slices';
+import { selectSearchResultOneBookState, toggleAddedToTrue } from '../../../redux/searchResultBooks/slices';
 import { selectUser } from '../../../redux/login/slices';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../../../styles/SearchBooksId.module.css'
 import { MdArrowBack } from 'react-icons/md'
 import BookDetails from '../../../components/BookDetails';
 import { handleAddBook } from '../../../library';
-
 
 const SearchBook = () => {
   const [fallbackBook, setFallbackBook] = useState(null);
@@ -17,7 +15,6 @@ const SearchBook = () => {
   const book = useSelector(state => selectSearchResultOneBookState(state, router.query.id));
 
   const fetchFallbackBook = async () => {
-    // console.log('fetchfallback was called')
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${router.query.id}`);
     const parsedResponse = await response.json();
     const newBook = {
@@ -29,6 +26,7 @@ const SearchBook = () => {
       smallThumbnailLink: parsedResponse.volumeInfo?.imageLinks?.smallThumbnail || '',
       thumbnailLink: parsedResponse.volumeInfo?.imageLinks?.thumbnail || '',
       googlebooks_id: parsedResponse.id,
+      added: false,
     }
     setFallbackBook(newBook);
   }
@@ -39,14 +37,12 @@ const SearchBook = () => {
     }
   }, [])
 
-
   const dispatch = useDispatch();
   const userUid = useSelector(selectUser)?.uid;
-  const [bookAdded, setBookAdded] = useState(false);
 
   const addBook = e => {
     handleAddBook(e, book || fallbackBook, dispatch, userUid);
-    setBookAdded(true);
+    dispatch(toggleAddedToTrue(router.query.id));
   }
 
   return (
@@ -55,13 +51,11 @@ const SearchBook = () => {
         {(book || fallbackBook) && <BookDetails book={book || fallbackBook} />}
         <div className={styles.clickablesContainer}>
           <Link className={styles.backLink} href="/books/add"><MdArrowBack className="backIcon" /></Link>
-          {bookAdded ? <div>Book added</div> : <button className={styles.addBookButton} onClick={addBook}>Add book</button>}
+          {book.added ? <div>Book added</div> : <button className={styles.addBookButton} onClick={addBook}>Add book</button>}
         </div>
       </div>
     </div>
   )
 }
-
-
 
 export default SearchBook

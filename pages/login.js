@@ -1,9 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, logout } from '../redux/login/slices'
-import { selectUser } from '../redux/login/slices';
+import { useDispatch } from 'react-redux';
+import { login } from '../redux/login/slices'
 import { provider, auth } from '../firebase'
-import { signOut, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 import { useRouter } from 'next/router'
 import styles from '../styles/Login.module.css'
 
@@ -36,7 +34,6 @@ export default function Home() {
       });
   }
 
-  // do something about this, I think we ever only see the loginbutton
   return (
     <div className={styles.container}>
       <div className={styles.loginContainer}>
