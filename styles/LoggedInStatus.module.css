@@ -23,7 +23,10 @@
 .photo {
   border-radius: 30px;
   margin-top: 0.5rem;
+}
 
+.goToLogin {
+  color: black;
 }
 
 @media (min-width: 500px){

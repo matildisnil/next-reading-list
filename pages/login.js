@@ -9,10 +9,7 @@ import styles from '../styles/Login.module.css'
 
 export default function Home() {
   const router = useRouter();
-  // const [user, setUser] = useState(null);
   const dispatch = useDispatch();
-  const reduxUser = useSelector(selectUser)?.email;
-
   const handleLogin = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -27,49 +24,26 @@ export default function Home() {
         );
         // ...
       }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        // // Handle Errors here.
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // // The email of the user's account used.
+        // const email = error.customData.email;
+        // // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // // ...
+        alert('Something went wrong, please try again.');
       });
   }
 
-  const handleNavigate = () => {
-    router.push('/');
-  }
-
-// do something about this, I think we ever only see the loginbutton
+  // do something about this, I think we ever only see the loginbutton
   return (
     <div className={styles.container}>
-      {
-        !reduxUser ?
-        <div className={styles.loginContainer}>
-          <h1 className={styles.header}>Welcome to Please-Read-Me</h1>
-          <h2 className={styles.subHeader}>- an app to keep track of the books in your life</h2>
-          <button onClick={handleLogin} className={styles.loginButton}>Log in with Google</button>
-        </div>
-          :
-          <div className={styles.loggedIn}>
-            {/* <button onClick={handleLogOut}>Log out</button> */}
-            <div>You are logged in as {reduxUser}</div>
-            <button onClick={handleNavigate} className={styles.goToListButton}>Go to list</button>
-          </div>
-      }
+      <div className={styles.loginContainer}>
+        <h1 className={styles.header}>Welcome to Please-Read-Me</h1>
+        <h2 className={styles.subHeader}>- an app to keep track of the books in your life</h2>
+        <button onClick={handleLogin} className={styles.loginButton}>Log in with Google</button>
+      </div>
     </div>
   );
 }
-
-
-
-
-// export async function getServerSideProps(ctx) {
-//   return {
-//     props: {
-//       session: await getSession(ctx)
-//     }
-//   }
-// }

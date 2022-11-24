@@ -11,7 +11,7 @@ export const searchResultsBooksSlice = createSlice({
     },
     extraReducers: {
         [HYDRATE]: (state, action) => {
-          console.log('HYDRATE', state, action.payload);
+          // console.log('HYDRATE', state, action.payload);
           return {
             ...state,
             ...action.payload.searchResultBooks,
@@ -21,6 +21,8 @@ export const searchResultsBooksSlice = createSlice({
 })
 
 export const { addSearchResultBooks } = searchResultsBooksSlice.actions;
-export const selectSearchResultBookState = state => state?.searchResultBooks;
+export const selectSearchResultBooksState = state => state?.searchResultBooks;
+export const selectSearchResultOneBookState = (state, id) => state?.searchResultBooks?.find(book => book.googlebooks_id === id);
+
 
 export default searchResultsBooksSlice.reducer;
