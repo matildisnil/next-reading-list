@@ -36,22 +36,22 @@ export default function AuthHandler({ children }) {
         // console.log('useeffectgate authhandler');
         // const tempArray = [];
 
-        // if (user.uid /* && books.length === 0 */) {
-        //   const tempArray = [];
-        //   console.log('books reloaded');
-        //   const q = query(collection(db, "Books"), where("createdBy", "==", user.uid), orderBy("createdAt", "desc"));
-        //   getDocs(q)
-        //     .then((entries) => {
-        //       entries.forEach(entry => {
-        //         tempArray.push({ ...entry.data(), createdAt: entry.data().createdAt.toString(), id: entry.id });
-        //       })
-        //       dispatch(loadBooks(tempArray));
-        //     })
-        //     .catch(err => {
-        //       alert(err);
-        //     })
-        //   // }
-        // }
+        if (user.uid /* && books.length === 0 */) {
+          const tempArray = [];
+          // console.log('books reloaded');
+          const q = query(collection(db, "Books"), where("createdBy", "==", user.uid), orderBy("createdAt", "desc"));
+          getDocs(q)
+            .then((entries) => {
+              entries.forEach(entry => {
+                tempArray.push({ ...entry.data(), createdAt: entry.data().createdAt.toString(), id: entry.id });
+              })
+              dispatch(loadBooks(tempArray));
+            })
+            .catch(err => {
+              alert(err);
+            })
+          // }
+        }
       }
       else {
         router.push('/loading');

@@ -9,16 +9,6 @@ export const readOrUnreadSlice = createSlice({
     reducers: {
         toggleReadOrUnread: state => !state,
     },
-    // extraReducers: {
-    //     [HYDRATE]: (state, action) => {
-    //         // this never logs, maybe not working
-    //         console.log('HYDRATE', state, action.payload);
-    //         // not sure about this
-    //         return {
-    //             ...state,
-    //         };
-    //     }
-    // }
 })
 
 export const { toggleReadOrUnread } = readOrUnreadSlice.actions;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../redux/login/slices';
-import { selectSearchResultBookState } from '../redux/searchResultBooks/slices';
+import { selectSearchResultBooksState, selectSearchResultOneBookState } from '../redux/searchResultBooks/slices';
 import styles from '../styles/SearchResultBook.module.css'
 import Image from 'next/image';
 import { handleAddBook } from '../library';
@@ -13,8 +13,10 @@ import { GiBookCover } from 'react-icons/gi'
 
 const SearchResultBook = ({ bookId }) => {
     const router = useRouter();
-    const books = useSelector(selectSearchResultBookState);
-    const book = books.find(b => b.googlebooks_id === bookId);
+    // const books = useSelector(selectSearchResultBooksState);
+    // const book = books.find(b => b.googlebooks_id === bookId);
+    const book = useSelector(state => selectSearchResultOneBookState(state, bookId))
+    
     const dispatch = useDispatch();
     const userUid = useSelector(selectUser)?.uid;
     const [bookAdded, setBookAdded] = useState(false);

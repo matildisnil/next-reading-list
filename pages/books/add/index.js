@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { selectSearchResultBookState } from '../../../redux/searchResultBooks/slices';
+import { selectSearchResultBooksState } from '../../../redux/searchResultBooks/slices';
 import styles from '../../../styles/AddBook.module.css'
 import SearchResultBook from '../../../components/SearchResultBook';
 import { handleAddBook } from '../../../library';
@@ -11,7 +11,7 @@ import ManualAdd from '../../../components/ManualAdd';
 
 const AddBook = () => {
   const dispatch = useDispatch();
-  const searchResults = useSelector(selectSearchResultBookState);
+  const searchResults = useSelector(selectSearchResultBooksState);
   const [manualAddIsActive, setManualAddIsActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
